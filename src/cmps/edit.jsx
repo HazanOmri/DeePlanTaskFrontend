@@ -39,17 +39,27 @@ export function Edit({ item = itemService.getEmptyItem(), closeModal }) {
         }
     }
 
-    function handeleNewInputs({ target }, idx) {
+    function handleNonDefault({ target }, idx) {
         const values = [...linesValues]
-        console.log('idx', idx)
         if (target.name.charAt(0) === 'k') {
-            values[idx] = { ...values[idx], "key": target.value }
+            values[idx] = { ...values[idx], key: target.value }
         }
         else if (target.name.charAt(0) === 'v') {
             values[idx] = { ...values[idx], value: target.value }
         }
         setLinesValues(values)
         console.log('values', values)
+    }
+
+    function handleNewLine({ target }, idx) {
+        const values = [...addedLines]
+        if (target.name.charAt(0) === 'k') {
+            values[idx] = { ...values[idx], key: target.value }
+        }
+        else if (target.name.charAt(0) === 'v') {
+            values[idx] = { ...values[idx], value: target.value }
+        }
+        setAddedLines(values)
     }
 
     function toggleMenu() {
@@ -89,16 +99,12 @@ export function Edit({ item = itemService.getEmptyItem(), closeModal }) {
             date: itemDate,
             num: item.num
         }
-        // if (addedLines.length > 0) {
-        //     addedLines.forEach((line) => {
-        //         if (line.key !== undefined && line.value !== undefined)
-        //             newItem = { ...newItem, [line.key]: line.value }
-        //     })
-        // }
         linesValues.forEach((line) => {
             newItem = { ...newItem, [line.key]: line.value }
         })
-        console.log('newItem', newItem)
+        addedLines.forEach((line) => {
+            newItem = { ...newItem, [line.key]: line.value }
+        })
         try {
             if (newItem._id) updateItem(newItem)
             else addItem(newItem)
@@ -158,14 +164,14 @@ export function Edit({ item = itemService.getEmptyItem(), closeModal }) {
             <div className="added-lines">
                 {linesValues.length > 0 && linesValues.map((line, index) => {
                     return <div className="saved-line" key={`line${index}`}>
-                        <input type="text" onChange={(ev) => handeleNewInputs(ev, index)} value={line.key} name={`k${index}`} />
-                        <input type="text" onChange={(ev) => handeleNewInputs(ev, index)} value={line.value} name={`v${index}`} />
+                        <input type="text" onChange={(ev) => handleNonDefault(ev, index)} value={line.key} name={`k${index}`} />
+                        <input type="text" onChange={(ev) => handleNonDefault(ev, index)} value={line.value} name={`v${index}`} />
                     </div>
                 })}
-                {addedLines.length > 0 && addedLines.map((line, index = linesValues.length) => {
+                {addedLines.length > 0 && addedLines.map((line, index) => {
                     return <div key={`line${index}`}>
-                        <input type="text" onChange={(ev) => handeleNewInputs(ev, index)} value={line.key} name={`k${index}`} />
-                        <input type="text" onChange={(ev) => handeleNewInputs(ev, index)} value={line.value} name={`v${index}`} />
+                        <input type="text" onChange={(ev) => handleNewLine(ev, index)} value={line.key} name={`k${index}`} />
+                        <input type="text" onChange={(ev) => handleNewLine(ev, index)} value={line.value} name={`v${index}`} />
                     </div>
                 })}
             </div>
