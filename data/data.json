@@ -1,0 +1,16 @@
+[
+    {
+        "num": 1,
+        "name": "apple",
+        "desc": "Red/green rounded sweet or sour",
+        "kind": "fruit",
+        "date": "31/07/2023"
+    },
+    {
+        "num": 2,
+        "name": "tomato",
+        "desc": "Red and sour reounded vegetable",
+        "kind": "vegetable",
+        "date": "31/07/2023"
+    }
+]

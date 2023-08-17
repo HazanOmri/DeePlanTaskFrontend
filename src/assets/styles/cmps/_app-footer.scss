@@ -1,0 +1,12 @@
+.app-footer {
+    margin-top: auto;
+    align-self: center;
+    padding: 10px;
+    background-color: darken($clr4, 8%);
+    width: 100%;
+    text-align: center;
+
+    p {
+        color: $clr3;
+    }
+}

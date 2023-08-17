@@ -1,0 +1,53 @@
+.item-preview-container {
+
+    .item-preview {
+        position: relative;
+        background-color: $clr2;
+        padding: 20px 40px 15px 20px;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 2px 9px 0 rgb(0 0 0 / 10%);
+        
+        @media (max-width: $mobile-size) {
+            padding: 20px 30px 15px 20px;
+        }
+    }
+
+    label {
+        margin: 5px 0;
+        display: flex;
+        justify-content: space-between;
+        color: $clr1;
+        -webkit-text-stroke-width: .3px;
+        -webkit-text-stroke-color: black;
+
+        p {
+            color: $clr3;
+            text-align: start;
+            width: 200px;
+        }
+    }
+
+    .edit-btn {
+        display: flex;
+        position: absolute;
+        right: 6px;
+        bottom: 6px;
+        border-radius: 50%;
+        background-color: $clr1;
+        transition: all .3s;
+        width: 30px;
+        height: 30px;
+        
+        
+        svg {
+            margin: auto;
+        }
+
+        &:hover {
+            background-color: darken($clr1, 10%);
+            cursor: pointer;
+        }
+    }
+}

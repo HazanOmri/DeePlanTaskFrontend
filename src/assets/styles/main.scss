@@ -1,0 +1,21 @@
+// Setup
+@import "setup/_variables";
+@import "setup/_mixins";
+
+// Basics
+@import "basics/_basic";
+@import "basics/_layout";
+
+//PAGES
+@import './pages/home.scss';
+
+
+//CMPS
+@import './cmps/app-header.scss';
+@import './cmps/app-footer.scss';
+@import './cmps/item-list.scss';
+@import './cmps/item-preview.scss';
+@import './cmps/edit.scss';
+@import './cmps/user-msg.scss';
+
+

@@ -1,0 +1,21 @@
+.user-msg {
+    background-color: $clr5;
+    display: flex;
+    justify-content: center;
+    padding: .7em 1em;
+    font-size: 1.1em;
+    border-radius: 2px;
+    position: absolute;
+    bottom: 68px;
+    left: 20px;
+    color: $clr3;
+    font-size: 24px;
+    border-radius: 24px;
+
+    @media (max-width: $mobile-size) {
+        font-size: 0.8em;
+        top: 50px;
+        left: 7px;
+    }
+}
+

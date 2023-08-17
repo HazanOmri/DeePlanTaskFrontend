@@ -1,0 +1,36 @@
+.home {
+    .actions {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .serach {
+        padding: 5px 10px;
+        border: 2px solid $clr3;
+        border-radius: 16px;
+        width: 185px;
+        background-color: $clr4;
+
+        &::placeholder {
+            color: $clr3;
+        }
+    }
+
+
+    .add {
+        display: flex;
+        color: $clr3;
+        background-color: darken($clr4, 8%);
+        border: none;
+        border-radius: 50%;
+        align-self: center;
+        padding: 10px;
+        transition: all .3s;
+
+        &:hover {
+            cursor: pointer;
+            background-color: darken($clr4, 18%);
+        }
+    }
+}

@@ -1,0 +1,31 @@
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: $clr4;
+}
+
+.main-app {
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+
+    >*:not(.full) {
+        grid-column: 2;
+    }
+
+    .full {
+        grid-column: 1/-1;
+    }
+
+    @media (max-width: $mobile-size) {
+        grid-template-columns: 7px 1fr 7px;
+    }
+}
+
+main {
+    // padding-top: 74px;
+
+    @media (max-width: $mobile-size) {
+        // padding-top: 54px;
+    }
+}
