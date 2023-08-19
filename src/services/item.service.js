@@ -51,7 +51,7 @@ function getEmptyItem() {
         desc: '',
         kind: '0',
         date: '',
-        num: 1
+        num: 100
     }
 }
 

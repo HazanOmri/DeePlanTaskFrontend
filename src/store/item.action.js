@@ -29,7 +29,6 @@ export async function removeItem(item) {
 }
 
 export async function updateItem(item) {
-    console.log('In updateItem')
     try {
         store.dispatch({ type: UPDATE_ITEM, item })
     } catch (err) {

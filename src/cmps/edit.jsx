@@ -3,7 +3,6 @@ import { itemService } from '../services/item.service'
 import Swal from 'sweetalert2'
 import { showSavedMsg } from '../services/event-bus.service'
 import { addItem, updateItem } from '../store/item.action'
-import { useEffect } from 'react'
 
 export function Edit({ item = itemService.getEmptyItem(), closeModal }) {
     const [itemName, setItemName] = useState(item.name)
@@ -14,10 +13,6 @@ export function Edit({ item = itemService.getEmptyItem(), closeModal }) {
     const [linesValues, setLinesValues] = useState(itemService.getLinesValues(item))
     const elScreenRef = useRef(null)
     const elUlRef = useRef(null)
-
-    useEffect(() => {
-        console.log('linesValues', linesValues)
-    }, [])
 
     function handleChange({ target }) {
         switch (target.id) {
@@ -48,7 +43,6 @@ export function Edit({ item = itemService.getEmptyItem(), closeModal }) {
             values[idx] = { ...values[idx], value: target.value }
         }
         setLinesValues(values)
-        console.log('values', values)
     }
 
     function handleNewLine({ target }, idx) {
@@ -100,10 +94,12 @@ export function Edit({ item = itemService.getEmptyItem(), closeModal }) {
             num: item.num
         }
         linesValues.forEach((line) => {
-            newItem = { ...newItem, [line.key]: line.value }
+            if (line.key !== undefined && line.value !== undefined &&
+                line.key !== '' && line.key !== '') newItem = { ...newItem, [line.key]: line.value }
         })
         addedLines.forEach((line) => {
-            newItem = { ...newItem, [line.key]: line.value }
+            if (line.key !== undefined && line.value !== undefined &&
+                line.key !== '' && line.key !== '') newItem = { ...newItem, [line.key]: line.value }
         })
         try {
             if (newItem._id) updateItem(newItem)

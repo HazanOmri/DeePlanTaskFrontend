@@ -16,7 +16,7 @@ export function itemReducer(state = initialState, action) {
         case SET_ITEMS:
             return { ...state, items: action.items }
         case ADD_ITEM:
-            items.push(action.item)
+            items.push({ ...action.item, num: items.length + 1 })
             return { ...state, items }
         case REMOVE_ITEM:
             items = items.filter(item => item._id !== action.item._id)
@@ -24,7 +24,6 @@ export function itemReducer(state = initialState, action) {
         case UPDATE_ITEM:
             const itemIndex = items.findIndex(item => item._id === action.item._id)
             items[itemIndex] = action.item
-            console.log('items', items)
             return { ...state, items }
         default:
             return state
